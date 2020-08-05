@@ -39,27 +39,41 @@
       <button class="col-4 btn btn-success" type="submit">Shorten</button>
       </div>
     </form>
-    <% shortUrls.forEach(shortUrl => { %>
 
-    <div class="container alert alert-success mt-3 text-center">
-      <h4>Short url Created</h4>
-      <div class="text-center">  
+    <div class="container  mt-3 text-center">
+      <h4>Active Short url so far</h4>
+      <% shortUrls.forEach(shortUrl => { %>
+
+      <span class="text-center">  
+        <span>
+          <bold>Original Url</bold>
+  
+          <a
+          href="<%= shortUrl.full%>"
+          target="_blank" class='mx-2'>
+          <%= shortUrl.full %>
+        </a>
+        </span>
       <span>
+        <bold>Short Url</bold>
+
         <a
         href="<%= shortUrl.short%>"
-        target="_blank">
-        <h5 class="mb-0"><%= shortUrl.short %></h5>
+        target="_blank" class='mx-2'>
+        <%= shortUrl.short %>
       </a>
       </span>
       <span>
-        <h5 class='mt-2'>Clicks </h5>
+        <bold>Clicks</bold>
 
           <%= shortUrl.clicks %>
       </span>
-    </div>
+    </span>
+  </br>
+    <% }) %>
+
       </div>
     </div>
-    <% }) %>
 
   </div>
 </body>

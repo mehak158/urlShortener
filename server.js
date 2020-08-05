@@ -45,13 +45,6 @@ app.post('/shortUrls', async (req, res) => {
       await ShortUrl.create({ full: req.body.fullUrl, short:uniqueName,expiryDate:expireAt, unique_name:req.body.uniqueName })
     }
   }
-  const d = new Date;
-  const exp = new Date(req.body.date);
-
-  if(d.toDateString() === exp.toDateString()) {
-    await ShortUrl.findOneAndRemove({short:req.body.shortUrl})
-  }
-
   res.redirect('/')
 })
 
