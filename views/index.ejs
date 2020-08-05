@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="col-8 mx-auto my-4 text-center">URL Shortener</h1>
+    <h5 class="col-8 mx-auto my-2 text-center">Shorten your long URL</h5>
+    <form action="/shortUrls" method="POST" class="my-4">
+      <div class="form-group">
+
+      <label for="fullUrl" class="sr-only">Original Url</label>
+      <input required placeholder="Original url" type="url" name="fullUrl" id="fullUrl" class="form-control col-6 mx-auto">
+      </div>
+      <div class="form-group">
+
+      <label for="uniqueName" class="sr-only">Unique Name</label>
+      <input  placeholder="Unique name for short link (optional)" type="text" name="uniqueName" id="uniqueName" class="form-control col-6 mx-auto">
+    </div>
+
+      <div class="form-group">
+
+      <label for="expireIn" class="sr-only">Exprire time</label>
+
+      <input
+      type="number"
+      name="expireIn"
+      id="expireIn"
+      placeholder="Expire time for short link (in seconds) (optional)"
+      class="form-control  col-6 mx-auto"
+    />
+    </div>
+    <div class="form-group text-center mx-auto">
+      <button class="col-4 btn btn-success" type="submit">Shorten</button>
+      </div>
+    </form>
+    <% shortUrls.forEach(shortUrl => { %>
+
+    <div class="container alert alert-success mt-3 text-center">
+      <h4>Short url Created</h4>
+      <div class="text-center">  
+      <span>
+        <a
+        href="<%= shortUrl.short%>"
+        target="_blank">
+        <h5 class="mb-0"><%= shortUrl.short %></h5>
+      </a>
+      </span>
+      <span>
+        <h5 class='mt-2'>Clicks </h5>
+
+          <%= shortUrl.clicks %>
+      </span>
+    </div>
+      </div>
+    </div>
+    <% }) %>
+
+  </div>
+</body>
+</html>
